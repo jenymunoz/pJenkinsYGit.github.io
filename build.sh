@@ -40,7 +40,7 @@ echo "tarea realizada"
 
 ##############################################
 
-echo "pasando texto a cabecera.html"
+echo "pasando texto a cuerpo.html"
 cat << EOF >> cuerpo.html
 <html lang="es">
 <head>
@@ -49,7 +49,7 @@ cat << EOF >> cuerpo.html
     <title>Document</title>
 </head>
 <body>
-    <h1>Elementos que pueden ir dentro de la etiquita "<body></body>" </h1>
+    <h1>Elementos que pueden ir dentro de la etiqueta "<body></body>" </h1>
 </body>
 </html>
 
@@ -58,7 +58,7 @@ echo "tarea realizada"
 
 ##############################################
 
-echo "pasando texto a cabecera.html"
+echo "pasando texto a pie.html"
 cat << EOF >> pie.html
 <head>
     <meta charset="UTF-8">
@@ -77,5 +77,10 @@ echo "tarea realizada"
 echo "vamos a descargar el archivo que contiene los estilos"
 wget https://www.w3schools.com/w3css/4/w3.css
 
-echo "comprobando si la ejecución fue cooercta"
-
+echo "comprobando si la ejecución fue correcta"
+if[[ wget -ne 0 ]];then
+echo "descarga correcta"
+else
+echo "descarga incorecta"
+exit 1
+fi
