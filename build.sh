@@ -1,13 +1,21 @@
 #!/usr/bin/bash
 
 echo "iniciando tarea 01"
-echo "descargando el archivo de internet..."
-wget -q https://www.w3schools.com/w3css/4/w3.css
 
-if [ $? = 0 ]; then
-	echo "descarga correcta"
+if [ -e w3.css ]; then
+	echo "El archivo existe. No es necesario iniciarla descarga"
 else
-	echo "descarga incorrecta"
+	echo "El archivo no existe. El archivo debe ser descargado"
+	echo "Iniciando descarga..."
+	wget -q https://www.w3schools.com/w3css/4/w3.css
+	if [ $? = 0 ]; then
+		echo "descarga correcta"
+		echo $?
+	else
+		echo "descarga incorrecta"
+		echo $?
+		exit 1
+	fi
 fi
 
 echo $?
@@ -16,9 +24,8 @@ if [ -e w3.css ]; then
 	echo "correcto. Ahora el archivo puede ser utilizado"
 else
 	echo "Este archivo no existe"
-	echo "Descargando..."
-	wget  https://www.w3schools.com/w3css/4/w3.css
 	echo "tarea terminada"
+	exit 1
 fi
 echo "tarea terminiada"
 
